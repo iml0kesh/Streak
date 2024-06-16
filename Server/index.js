@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 import connectDB from "./config/dbConn.js";
+
 
 import User from "./models/userModel.js";
 
