@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// import Task from "./TaskModel.js";
+
 const userSchema = new mongoose.Schema({
   userFirstName: {
     type: String,
@@ -29,14 +31,27 @@ const userSchema = new mongoose.Schema({
     {
       taskTitle: {
         type: String,
-        required: true,
       },
       taskContent: {
         type: String,
-        required: true,
       },
-    },
-  ],
+      taskCreatedOn: {
+        type: Date,
+      },
+      taskStartsOn: {
+        type: String,
+      },
+      taskStreak: {
+        type: Number,
+      },
+      taskEndsOn: {
+        type: String,
+      },
+      taskStatus: {
+        type: String,
+      }
+    }
+  ]
 });
 
 export default mongoose.model("user", userSchema);

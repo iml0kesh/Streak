@@ -1,5 +1,5 @@
 import express from "express";
-import { addTask } from "../controllers/taskController";
+import { addTask } from "../controllers/taskController.js";
 
 const router = express.Router();
 

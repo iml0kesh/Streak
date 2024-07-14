@@ -1,22 +1,40 @@
-import User from "../models/userModel";
+import { format } from 'date-fns'
 
-const addTask = async (req, res) => {
-    try {
-        const { user_id, taskTitle, taskContent } = req.body;
-        const user = await User.findOne({ userId: user_id });
+import User from "../models/UserModel.js";
 
-        if (!user) {
-            res.status(500).json({ message: "user not found", error: err.message });
-        }
+export const addTask = async (req, res) => {
+  try {
+    const { userId, taskTitle, taskContent, taskStreak } = req.body;
+    
+    let {taskStartsOn} = req.body;
+    taskStartsOn = new Date(taskStartsOn);
 
-        user.userTasks.push({ taskTitle, taskContent });
-        await user.save();
-        res.status(201).json({ message: "Task added" });
-    } catch (err) {
-        res.status(500).json({ message: "Failed to add task", error: err.message });
+    const taskCreatedOn = Date();
+    const taskEndsOn = new Date(taskStartsOn)
+    taskEndsOn.setDate(taskEndsOn.getDate() + parseInt(taskStreak))
+
+    const taskStatus = false;
+    
+
+    const user = await User.findOne({ userId });
+    if (!user) {
+      return res.status(500).json({ message: "User not found" });
     }
-}
 
-export default {
-    addTask
-}
+    user.userTasks.push({
+      taskTitle,
+      taskContent,
+      taskCreatedOn,
+      taskStartsOn,
+      taskStreak,
+      taskEndsOn,
+      taskStatus: false,
+    });
+    await user.save();
+
+    res.json({message: "hello"})
+  } catch (err) {
+    console.error("Error adding task:", err);
+    res.status(500).json({ message: "Failed to add task", error: err.message });
+  }
+};

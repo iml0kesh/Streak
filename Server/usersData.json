@@ -18,6 +18,29 @@
     "userLastName": "Matta",
     "userEmail": "loki@gmail.com",
     "userId": "loki",
-    "userPassword": "lokiii"
+    "userPassword": "lokiii",
+    "userTasks": {
+      "taskTitle": "To Learn WEB DEVELOPMENT",
+      "taskContent": "i want to learn web development at any cost!",
+      "taskStartsOn": "",
+      "taskStreak": "",
+      "taskEndsOn": "",
+      "taskStatus": ""
+    }
+  },
+  {
+    "userFirstName": "Meghana",
+    "userLastName": "Matta",
+    "userEmail": "meghana@gmail.com",
+    "userId": "megha",
+    "userPassword": "megha",
+    "userTasks": {
+      "taskTitle": "To Learn WEB DEVELOPMENT",
+      "taskContent": "i want to learn web development at any cost!",
+      "taskStartsOn": "",
+      "taskStreak": "",
+      "taskEndsOn": "",
+      "taskStatus": ""
+    }
   }
 ]

@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import User from "../models/userModel";
+import User from "../models/UserModel.js";
 
 export const registerUser = async (req, res) => {
     try {
@@ -43,5 +43,24 @@ export const loginUser = async (req, res) => {
         res.status(200).json({ message: "Login succuss" })
     } catch (err) {
         res.status(500).json({ message: "Wrong email or password bro", error: err.message });
+    }
+}
+
+export const userDashBoard = async (req, res) => {
+    try {
+        res.json({msg : "Hello"})        
+    } catch (error) {
+        res.status(500).json({ message: "Wrong email or password bro", error: err.message });
+    }
+}
+
+export const getTasks = async (req, res) => {
+    try {
+
+        // console.log(req.params.user);
+        const u = await User.findOne({userId : req.params.user})
+        res.status(200).json(u.userTasks) 
+    } catch (error) {
+        res.status(500).json({ message: "Wrong email or password bro", error: error.message });
     }
 }

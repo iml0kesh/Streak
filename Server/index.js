@@ -1,12 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors"
 
 // Database Connection
 import connectDB from "./config/dbConn.js";
 
 // Routes
-import userRoutes from "./routes/userRoutes.js";
-import taskRoutes from "./routes/taskRoutes.js";
+import userRoutes from "./routes/UserRoutes.js";
+import taskRoutes from "./routes/TaskRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -16,9 +17,7 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/home", (req, res) => {
-  res.json({ msg: "Hello World" });
-});
+app.use(cors())
 
 app.use("/user", userRoutes);
 app.use("/task", taskRoutes);
